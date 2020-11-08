@@ -21,10 +21,8 @@ func isPrime(n int) bool {
 
 		if i > n/i {
 			return true
-		} else {
-			return false
 		}
-	} else {
 		return false
 	}
+	return false
 }
