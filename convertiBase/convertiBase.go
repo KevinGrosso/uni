@@ -15,6 +15,10 @@ func main() {
 	fmt.Print("In quale base lo vuoi convertire? (da 2 a 16) ")
 	fmt.Scan(&base)
 
+	if n == 0 {
+		fmt.Print(0)
+	}
+
 	for n != 0 {
 		conv = string(cifre[n%base]) + conv
 		n /= base
