@@ -13,7 +13,6 @@ func main() {
 
 	for ; n > 0; n-- {
 		fmt.Println(x)
-		x += y
-		x, y = y, x
+		x, y = y, x+y
 	}
 }
