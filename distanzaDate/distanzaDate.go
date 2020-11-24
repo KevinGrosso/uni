@@ -25,8 +25,7 @@ func main() {
 		return
 	}
 
-	fmt.Println(giorniDaEpoca(d1))
-	fmt.Println(giorniDaEpoca(d2))
+	fmt.Println(distanzaDate(d1, d2))
 }
 
 /* Funzione di debug*/
@@ -73,7 +72,7 @@ func giorniMese(m int, a int) int {
 	case 11, 4, 6, 9:
 		return 30
 	case 2:
-		if a%400 == 0 || a%4 == 0 && a%100 != 0 {
+		if éBisestile(a) {
 			return 29
 		}
 		return 28
@@ -82,7 +81,40 @@ func giorniMese(m int, a int) int {
 	}
 }
 
+func éBisestile(a int) bool {
+	if a%400 == 0 || a%4 == 0 && a%100 != 0 {
+		return true
+	}
+
+	return false
+}
+
 func giorniDaEpoca(d data) int {
-	// 1/1/1970
-	return 0
+	giorni := 0
+
+	for i := 1970; i < d.a; i++ {
+		if éBisestile(i) {
+			giorni += 366
+		} else {
+			giorni += 365
+		}
+	}
+
+	for i := 1; i < d.m; i++ {
+		giorni += giorniMese(i, d.a)
+	}
+
+	giorni += d.g - 1
+
+	return giorni
+}
+
+func distanzaDate(d1, d2 data) int {
+	dist := giorniDaEpoca(d1) - giorniDaEpoca(d2)
+
+	if dist < 0 {
+		dist *= -1
+	}
+
+	return dist
 }
