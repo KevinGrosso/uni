@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func anagrammi(r []rune) []string {
+func permutazioni(r []rune) []string {
 	if len(r) == 0 {
 		return []string{""}
 	}
@@ -14,7 +14,7 @@ func anagrammi(r []rune) []string {
 
 	for i := 0; i < len(r); i++ {
 		resto := []rune(string(r[:i]) + string(r[i+1:]))
-		lista := anagrammi(resto)
+		lista := permutazioni(resto)
 
 		for _, x := range lista {
 			risultato = append(risultato, string(r[i])+x)
