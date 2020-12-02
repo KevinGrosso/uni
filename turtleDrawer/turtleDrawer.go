@@ -1,11 +1,11 @@
 package main
 
 import (
-    "fmt"
-	"net/http"
+	"fmt"
 	"image"
 	"image/png"
 	"math"
+	"net/http"
 	"strconv"
 
 	"github.com/holizz/terrapin"
@@ -13,6 +13,7 @@ import (
 
 // Canvas condiviso tra tutti i client
 var canvas *image.RGBA
+
 // Tartaruga condivisa tra tutti i client
 var tarta *terrapin.Terrapin
 
@@ -23,9 +24,9 @@ func pageCanvas(w http.ResponseWriter, r *http.Request) {
 func ruotaTarta(rotazione string) {
 	switch rotazione {
 	case "45":
-		tarta.Right(math.Pi/4.0)
+		tarta.Right(math.Pi / 4.0)
 	case "90":
-		tarta.Right(math.Pi/2.0)
+		tarta.Right(math.Pi / 2.0)
 	case "180":
 		tarta.Right(math.Pi)
 	}
@@ -50,7 +51,7 @@ func pageMain(w http.ResponseWriter, r *http.Request) {
 	}
 
 	d := query.Get("for")
-	if d != ""{
+	if d != "" {
 		muoviTarta(d)
 	}
 
@@ -86,5 +87,5 @@ func main() {
 	http.HandleFunc("/", pageMain)
 
 	fmt.Println("Server online @ 127.0.0.1:4444")
-	http.ListenAndServe("192.168.1.2:4444", nil)
+	http.ListenAndServe("127.0.0.1:4444", nil)
 }
