@@ -11,14 +11,7 @@ import (
     
 )
 
-//const FILE_PATH = "ibm_logo.ch8"
-//const FILE_PATH = "test_opcode.ch8"
-//const FILE_PATH = "test_keypad.ch8"
-//const FILE_PATH = "pong.rom"
-//const FILE_PATH = "Soccer.ch8"
-//const FILE_PATH = "tetris.rom"
-//const FILE_PATH = "russian_roulette.ch8"
-const FILE_PATH = "bowling.ch8" 
+const FILE_PATH = "" //Path of the program to execute 
 
 var memory []byte
 var registers struct {
